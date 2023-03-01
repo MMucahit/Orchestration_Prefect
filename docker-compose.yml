@@ -5,7 +5,7 @@ services:
     image: prefecthq/prefect:2-python3.10
     restart: always
     volumes:
-      - prefect:/.prefect
+      - prefect:/root/.prefect
     entrypoint: ["prefect", "orion", "start"]
     environment:
       - PREFECT_ORION_API_HOST=0.0.0.0
