@@ -1,2 +1,13 @@
-# MLflow UI
-mlflow ui --backend-store-uri sqlite:///mlfow.db
+prefect server start 
+  ## => for start prefect server 
+prefect project init 
+  ## => for deployment
+  ## .prefectignore, deployment.yaml, prefect.yaml, .prefect/ will be created.
+prefect work-pool create --type process mlops-zoomcamp 
+  ## => for create worker
+prefect deploy repl.py:main -n nyc_taxi -p mlops-zoomcamp 
+  ## => deploy our flow and assign work-pool (mlops-zoomcamp)
+prefect worker start -p mlops-zoomcamp -t process
+  ## => worker is listening actions
+prefect deployment run .../nyc_taxi
+  ## => run deployment
