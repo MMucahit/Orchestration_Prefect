@@ -9,5 +9,5 @@ prefect deploy repl.py:main -n nyc_taxi -p mlops-zoomcamp
   ## => deploy our flow and assign work-pool (mlops-zoomcamp)
 prefect worker start -p mlops-zoomcamp -t process
   ## => worker is listening actions
-prefect deployment run .../nyc_taxi
+prefect deployment run main/nyc_taxi
   ## => run deployment
