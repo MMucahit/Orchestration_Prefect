@@ -16,3 +16,5 @@ pull:
     repository: https://github.com/MMucahit/Orchestration_Prefect.git
     branch: master
     access_token: null
+- prefect.projects.steps.set_working_directory:
+    set_working_directory: ./
