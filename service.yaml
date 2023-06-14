@@ -12,17 +12,15 @@ prefect worker start -p mlops-zoomcamp -t process
 prefect deployment run main/nyc_taxi
   ## => run deployment
 
-  ##### With Docker #####
-prefect server start 
-  ## => for start prefect server 
-prefect project init 
-  ## => for deployment
-  ## .prefectignore, deployment.yaml, prefect.yaml, .prefect/ will be created.
-prefect work-pool create --type docker docker-process
-  ## => for create worker
-prefect deploy repl.py:main -n nyc_taxi -p docker-process 
-  ## => deploy our flow and assign work-pool (docker-process)
-prefect worker start -p docker-process -t docker
-  ## => worker is listening actions
-prefect deployment run main/nyc_taxi_docker
-  ## => run deployment
+## Github (Store) and Docker (Process)
+prefect deployment build repl.py:main -n docker-github -q test
+  ## => create deployment
+prefect deployment apply main-deployment.yaml
+  ## => apply deployment
+prefect deployment build repl.py:main \
+  -n docker-github \
+  -q test \
+  -sb github/github-storage \
+  -ib docker-container/docker-process \
+  -o prefect-docker-github-deployment \
+  -- apply

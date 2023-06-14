@@ -1,0 +1,72 @@
+###
+### A complete description of a Prefect Deployment for flow 'main'
+###
+name: docker-github
+description: null
+version: 6ddd7e322f51932b668184b7d7498d84
+# The work queue that will handle this deployment's runs
+work_queue_name: test
+work_pool_name: default-agent-pool
+tags: []
+parameters: {}
+schedule: null
+is_schedule_active: true
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: main
+manifest_path: null
+infrastructure:
+  type: docker-container
+  env:
+    EXTRA_PIP_PACKAGES: pandas xgboost scikit-learn hyperopt pyarrow
+  labels: {}
+  name: null
+  command: null
+  image: prefecthq/prefect:2.10.8-python3.9
+  image_pull_policy: null
+  image_registry: null
+  networks: []
+  network_mode: null
+  auto_remove: false
+  volumes: []
+  stream_output: true
+  memswap_limit: null
+  mem_limit: null
+  privileged: false
+  _block_document_id: 17533452-d2d4-4856-a298-858ddf7a19a7
+  _block_document_name: docker-process
+  _is_anonymous: false
+  block_type_slug: docker-container
+  _block_type_slug: docker-container
+storage:
+  repository: https://github.com/MMucahit/Orchestration_Prefect
+  reference: master
+  access_token: null
+  include_git_objects: true
+  _block_document_id: b3c4fd6d-d31f-4083-ac4c-9596075384ea
+  _block_document_name: github-storage
+  _is_anonymous: false
+  block_type_slug: github
+  _block_type_slug: github
+path: ''
+entrypoint: repl.py:main
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    train_path:
+      title: train_path
+      default: ./data/green_tripdata_2022-01.parquet
+      position: 0
+      type: string
+    val_path:
+      title: val_path
+      default: ./data/green_tripdata_2022-02.parquet
+      position: 1
+      type: string
+  required: null
+  definitions: null
+timestamp: '2023-06-14T06:37:43.245911+00:00'
